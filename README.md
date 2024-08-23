@@ -1,2 +1,2 @@
 # nepobit
-official nepobit codes
+official nepobit code
