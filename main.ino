@@ -21,6 +21,7 @@
 Servo myservo;
 int rightDistance = 0, leftDistance = 0, middleDistance = 0;
 bool autoMode = false;
+int collideDistance = 50;
 char getstr;
 
 void forward() { 
@@ -228,7 +229,7 @@ void loop() {
     delay(500); 
     middleDistance = Distance_test();
 
-    if (middleDistance <= 20) {     
+    if (middleDistance <= collideDistance) {     
       stop();
       delay(500);
       myservo.write(10);          
@@ -251,7 +252,7 @@ void loop() {
       } else if (rightDistance < leftDistance) {
         left();
         delay(360);
-      } else if ((rightDistance <= 20) || (leftDistance <= 20)) {
+      } else if ((rightDistance <= collideDistance) || (leftDistance <= collideDistance)) {
         back();
         delay(180);
       } else {
