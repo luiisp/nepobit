@@ -15,7 +15,7 @@
 #define LED 13
 #define TRIG A5
 #define ECHO A4
-#define carSpeed 150
+#define carSpeed 190
 
 
 Servo myservo;
@@ -176,6 +176,31 @@ void dance() {
   stop();
 }
 
+void sayYes() {
+    forward();
+    delay(200);
+    back();
+    delay(200);
+    forward();
+    delay(200);
+    back();
+    delay(200);
+    stop();
+}
+
+void sayNo() {
+  for (int i = 0; i < 2; i++) {
+    myservo.write(60);
+    delay(250);
+    myservo.write(140);
+    delay(250);
+
+  }
+
+  myservo.write(90);
+}
+
+
 void setup() {
   myservo.attach(3);  
   Serial.begin(9600);
@@ -217,6 +242,14 @@ void loop() {
         stop();
         greet();
         superForward();
+        break;
+      case 'y': 
+        autoMode = false; 
+        sayYes(); 
+        break;
+      case 'n':
+        autoMode = false;
+        sayNo();
         break;
 
 
